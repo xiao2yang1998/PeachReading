@@ -1,0 +1,84 @@
+<!doctype html>
+
+<head>
+
+    {% block head %}
+
+     <link href="{{ url_for('static', filename='assets/css/app.css') }}" rel="stylesheet" type="text/css" />
+    <title>{% block title %}{% endblock %}</title>
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <div class="page">
+    {% block navbar %}
+                    <!-- Navigation Bar-->
+        <header id="topnav">
+            <nav class="navbar-custom">
+
+                <div class="container-fluid">
+                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle nav-user" href="index.html" >
+                                <span class="ml-1">{{ session.username }}</span>
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                    <ul class="list-inline menu-left mb-0">
+
+                        <li class="float-left">
+                            <a href="index.html" class="logo">
+                                <span class="logo-lg">
+                                    <img src="https://i.loli.net/2019/03/03/5c7bdcf9d47fe.png" alt="" height="40">
+
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </nav>
+            <!-- end topbar-main -->
+
+            <div class="topbar-menu">
+                <div class="container-fluid">
+                    <div id="navigation">
+                        <!-- Navigation Menu-->
+                        <ul class="navigation-menu">
+
+                            <li >
+                                <a href={{ url_for('index')}}>待批改</a>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href={{ url_for('course_page.ShowCourses')}}>我的课程</a>
+                            </li>
+
+                            <li >
+                                <a href={{ url_for('student_page.ShowStudents') }} >我的学生</a>
+                            </li>
+
+                        </ul>
+                        <!-- End navigation menu -->
+
+                    </div> <!-- end #navigation -->
+                </div> <!-- end container -->
+            </div> <!-- end navbar-custom -->
+        </header>
+        <!-- End Navigation Bar-->
+
+    {% endblock %}
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+</body>
