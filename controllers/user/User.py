@@ -15,7 +15,7 @@ def login():
         current_app.logger.debug("login post method")
         username = request.form['username']
         password = request.form['password']
-
+        print(username,password)
         user_info = User.query.filter_by( tea_email = username ).first()
         if not user_info:
             return jsonify({'status': '-1', 'errmsg': '用户名或密码错误！'})
@@ -25,10 +25,11 @@ def login():
         session['username'] = username
         session['password'] = password
         session['tea_id'] = user_info.tea_id
-        # response = make_response(json.dumps({'code': 200, 'msg': '登录成功~~'}))
-        # response.set_cookie('username', username)
+        return jsonify({'status': '1', 'errmsg': '登录成功！'})
+        response = make_response(json.dumps({'status': 200, 'msg': '登录成功~~'}))
+        response.set_cookie('username', username)
         resp = make_response(render_template('index.html', name=user_info.tea_name))
-        return resp
+        return response
         #
         # if username == '123@123' and password == '123':
         #     session['username'] = username

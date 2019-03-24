@@ -40,9 +40,6 @@ app.register_blueprint(route_homework)
     # return data
 #    return "hello"
 
-
-#？？？？？？？？？？？？？？？？？？？
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     current_app.logger.debug(" index page")
